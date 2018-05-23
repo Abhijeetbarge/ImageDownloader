@@ -2,10 +2,11 @@
 //  AppDelegate.swift
 //  ImageDownloader
 //
-//  Created by Capgemini on 23/05/18.
+//  Created by Abhijeet on 23/05/18.
 //
 
 import UIKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

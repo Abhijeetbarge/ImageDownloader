@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +14,99 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ImageDownloader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="155" estimatedRowHeight="155" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7jE-3k-pdX">
+                                <rect key="frame" x="0.0" y="50" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="155" id="RbK-ti-pN8" customClass="CustomCell" customModule="ImageDownloader" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="155"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RbK-ti-pN8" id="meW-FI-FP2">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="154.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a55-lm-i0H">
+                                                    <rect key="frame" x="80" y="15.5" width="160" height="123.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </imageView>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="IIO-u6-7Cr">
+                                                    <rect key="frame" x="150" y="68" width="20" height="20"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="IIO-u6-7Cr" firstAttribute="centerY" secondItem="a55-lm-i0H" secondAttribute="centerY" id="0jV-yn-Jb5"/>
+                                                <constraint firstItem="IIO-u6-7Cr" firstAttribute="centerX" secondItem="a55-lm-i0H" secondAttribute="centerX" id="2KE-3p-hUH"/>
+                                                <constraint firstItem="a55-lm-i0H" firstAttribute="width" secondItem="meW-FI-FP2" secondAttribute="width" multiplier="0.5" id="7e1-b3-cof"/>
+                                                <constraint firstItem="a55-lm-i0H" firstAttribute="centerY" secondItem="meW-FI-FP2" secondAttribute="centerY" id="Z1p-Qp-wqs"/>
+                                                <constraint firstItem="a55-lm-i0H" firstAttribute="centerX" secondItem="meW-FI-FP2" secondAttribute="centerX" id="ned-pj-B0a"/>
+                                                <constraint firstItem="a55-lm-i0H" firstAttribute="height" secondItem="meW-FI-FP2" secondAttribute="height" multiplier="0.8" id="snG-kc-1N5"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="activityIndicator" destination="IIO-u6-7Cr" id="uEs-Xg-uV9"/>
+                                            <outlet property="cellImage" destination="a55-lm-i0H" id="HPG-u5-b6U"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="ais-JO-wag"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="lZ1-zM-GOJ"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtn-am-P09">
+                                <rect key="frame" x="40" y="20" width="110" height="30"/>
+                                <color key="backgroundColor" red="0.60000002379999995" green="0.40000000600000002" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="q3h-tw-AJL"/>
+                                    <constraint firstAttribute="height" constant="30" id="yBA-ba-KPn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="Start Download">
+                                    <color key="titleColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="startDownload:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Icp-vz-rrn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fw-1g-Ieh">
+                                <rect key="frame" x="170" y="20" width="110" height="30"/>
+                                <color key="backgroundColor" red="0.60000002379999995" green="0.40000000600000002" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="Clear Cache">
+                                    <color key="titleColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearCache:" destination="BYZ-38-t0r" eventType="touchUpInside" id="04O-M9-Lpi"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="7jE-3k-pdX" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="50" id="AD5-qj-Mgo"/>
+                            <constraint firstItem="gtn-am-P09" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="-65" id="BVB-Cf-8Xa"/>
+                            <constraint firstItem="7jE-3k-pdX" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="CNg-aO-3JM"/>
+                            <constraint firstItem="gtn-am-P09" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="Fqm-YP-M1d"/>
+                            <constraint firstItem="5fw-1g-Ieh" firstAttribute="height" secondItem="gtn-am-P09" secondAttribute="height" id="GW6-2i-ShC"/>
+                            <constraint firstItem="7jE-3k-pdX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="J1q-cP-Jqh"/>
+                            <constraint firstItem="5fw-1g-Ieh" firstAttribute="top" secondItem="gtn-am-P09" secondAttribute="top" id="Sa3-4v-IN1"/>
+                            <constraint firstItem="5fw-1g-Ieh" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="65" id="YLn-Mf-UHE"/>
+                            <constraint firstItem="5fw-1g-Ieh" firstAttribute="width" secondItem="gtn-am-P09" secondAttribute="width" id="ik4-Qy-wCz"/>
+                            <constraint firstItem="7jE-3k-pdX" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="nQz-NG-fLF"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="imageTable" destination="7jE-3k-pdX" id="cMT-MO-3za"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="405" y="56"/>
         </scene>
     </scenes>
 </document>
